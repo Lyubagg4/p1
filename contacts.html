@@ -6,23 +6,22 @@
     <title>Контакты - Название вашего сайта</title>
     <meta name="description" content="Контактная информация и как с нами связаться">
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header>
-    <a href="/">Логотип или название сайта</a>
-    <nav>
-        <ul>
-            <li><a href="index.html">Главная</a></li>
-            <li><a href="about.html">О нас</a></li>
-            <li><a href="contacts.html">Контакты</a></li>
+<!-- Блок "header" -->
+<header class="site-header">
+    <a class="site-header__brand" href="/">Лого</a>
+    <nav class="site-nav" aria-label="Основная навигация">
+        <ul class="site-nav__list">
+            <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="about.html">О нас</a></li>
+            <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="contacts.html">Контакты</a></li>
         </ul>
     </nav>
-</header>
 
+</header>
 <main>
-    <nav aria-label="Хлебные крошки">
-        <a href="index.html">Главная</a> - <span>Контакты</span>
-    </nav>
 
     <h1>Наши контакты</h1>
 

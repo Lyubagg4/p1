@@ -7,25 +7,31 @@
     <meta name="description" content="Краткое описание главной страницы вашего сайта">
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
-    <script src="main.js" defer></script>
+
 </head>
 <body>
 <!-- Шапка сайта -->
-<header>
-    <a href="/">Логотип или название сайта</a>
-    <!-- Главное меню навигации -->
-    <nav>
-        <ul>
-            <li><a href="index.html">Главная</a></li>
-            <li><a href="about.html">О нас</a></li>
-            <li><a href="contacts.html">Контакты</a></li>
+<!-- Блок "header" -->
+<header class="site-header">
+    <a class="site-header__brand" href="/">Лого</a>
+    <nav class="site-nav" aria-label="Основная навигация">
+        <ul class="site-nav__list">
+            <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="index.html">Главная</a></li> <!-- --active здесь -->
+            <li class="site-nav__item"><a class="site-nav__link" href="about.html">О нас</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
         </ul>
     </nav>
 </header>
 <!-- Уникальное основное содержимое страницы -->
 <main>
+    <!-- Добавьте сразу после <main> -->
+    <section class="hero">
+        <h2>проект</h2>
+        <a href="#services" class="hero__cta">Узнать больше</a>
+    </section>
     <h1>Добро пожаловать на наш сайт!</h1>
     <!-- Секция 1 с якорем -->
+    <button id="openDialog" type="button">Написать нам</button>
     <section id="services">
         <h2>Наши услуги</h2>
         <p>Описание предоставляемых услуг...</p>
@@ -35,7 +41,31 @@
     <section id="portfolio">
         <h2>Портфолио</h2>
         <p>Примеры наших работ...</p>
+        <img src="assets/21.jpg"
+             srcset="assets/21.jpg 320w,
+             assets/22.jpg 640w,
+             assets/23.jpg 960w,
+             assets/24.jpg 1280w"
+             sizes="(max-width: 480px) 95vw,
+            (max-width: 768px) 90vw,
+            (max-width: 1200px) 640px,
+            800px"
+             alt="Пример проекта" width="800" height="450">
     </section>
+    <section>
+        <h2>Наша история</h2>
+        <p>Текст о том, как все начиналось...</p>
+        <!-- Видео с Rutube -->
+        <div class="media">
+            <iframe src="https://rutube.ru/play/embed/50ca86e9ad4e97a2372ec98306c008aa"
+                    title="История нашей компании"
+                    allow="autoplay; encrypted-media; picture-in-picture; web-share"
+                    allowfullscreen
+                    loading="lazy">
+            </iframe>
+        </div>
+    </section>
+
     <!-- Секция 3 с якорем -->
     <section id="contacts">
         <h2>Контактная информация</h2>
@@ -47,7 +77,6 @@
 <footer>
     <p>&copy; 2023 Название вашего сайта. Все права защищены.</p>
     <p>Телефон: +7 (123) 456-78-90</p>
-    <button id="openDialog" type="button">Написать нам</button>
 </footer>
 
 
@@ -84,3 +113,4 @@
 </dialog>
 <script src="main.js"></script>
 </body>
+</html>

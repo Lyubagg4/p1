@@ -1,0 +1,263 @@
+:root {
+  /* Палитра */
+  --color-bg: #fff;
+  --color-fg: #0b0b0b;
+  --color-muted: #666;
+  --color-primary: #0a84ff;
+  --color-danger: #b00020;
+  /* Типографика и размеры */
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 40px; /* Исправлено: было --space5 */
+  /* Скругления и тени */
+  --radius: 12px;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .08), 0 8px 24px rgba(0, 0, 0, .08);
+}
+
+
+
+/* Reset-минимум */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-body);
+  line-height: 1.5;
+}
+
+
+.container {
+  width: min(100% - 2 * var(--space-4), 1120px);
+  margin-inline: auto;
+}
+
+/* Вертикальные отступы секций по токенам */
+.section {
+  padding-block: var(--space-5);
+}
+
+.section__title {
+  margin: 0 0 var(--space-3);
+}
+
+/* ▼▼▼ Стили для шапки и навигации ▼▼▼ */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-4);
+  border-bottom: 1px solid var(--color-muted);
+}
+
+.header__logo {
+  font-weight: bold;
+  font-size: 1.25rem;
+  text-decoration: none;
+  color: var(--color-fg);
+}
+
+.header__logo:hover,
+.header__logo:focus-visible {
+  color: var(--color-primary);
+  outline: none;
+}
+
+.nav__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: var(--space-3);
+}
+
+.nav__link {
+  color: var(--color-muted);
+  text-decoration: none;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius);
+  transition: all 0.2s ease-in-out;
+  display: block;
+}
+
+.nav__link:hover {
+  color: var(--color-primary);
+  background-color: rgba(10, 132, 255, 0.1);
+}
+
+.nav__link:focus-visible {
+  color: var(--color-primary);
+  background-color: rgba(10, 132, 255, 0.1);
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.nav__link--active {
+  color: var(--color-primary);
+  font-weight: bold;
+  background-color: rgba(10, 132, 255, 0.15);
+}
+
+/* ▼▼▼ Стили для модального окна и формы (адаптировано под токены) ▼▼▼ */
+
+/* Модальное окно */
+dialog {
+  padding: var(--space-4); /* 24px */
+  border: none;
+  border-radius: var(--radius); /* 12px */
+  width: min(90vw, 500px); /* Адаптивная ширина */
+  background: var(--color-bg);
+  box-shadow: var(--shadow);
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0);
+}
+
+/* Подписи к полям */
+label {
+  display: block;
+  margin: var(--space-3) 0 var(--space-1); /* 16px сверху, 4px снизу */
+  font-weight: 500;
+}
+
+/* Поля ввода, селекты, текстовые области */
+:where(input, select, textarea) {
+  width: 100%;
+  padding: var(--space-2); /* 8px */
+  border: 1px solid var(--color-muted);
+  border-radius: var(--radius);
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+/* Фокус для полей */
+:where(input, select, textarea):focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-color: var(--color-primary);
+}
+
+/* Кнопки */
+button {
+  padding: var(--space-2) var(--space-3); /* 8px 16px */
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-weight: 500;
+  font-family: inherit;
+  transition: filter 0.2s ease;
+}
+
+button[type="submit"] {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+button[type="button"] {
+  background-color: var(--color-muted);
+  color: var(--color-bg);
+}
+
+button:hover {
+  filter: brightness(0.95);
+}
+
+/* Группа кнопок в форме */
+.form-actions {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+/* Состояние ошибки */
+[aria-invalid="true"],
+:where(input, select, textarea):invalid {
+  background-color: rgba(176, 0, 32, 0.05);
+}
+
+/* Подсказки под полями */
+small {
+  display: block;
+  margin-top: var(--space-1);
+  font-size: 0.875em;
+  color: var(--color-muted);
+}
+
+/* Плавный скролл к якорям */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Подсветка целевого элемента при переходе по якорю
+:target {
+  outline: 2px dashed var(--color-primary);
+  outline-offset: 4px;
+  background-color: rgba(10, 132, 255, 0.05);
+  padding: var(--space-2);
+  border-radius: var(--radius);
+}*/
+
+/* Геро-секция с фоном и градиентом */
+.hero {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.15)),
+                url("assets/111.jpg") center/cover no-repeat;
+    color: #fff;
+    padding: clamp(3rem, 8vw, 6rem) 1rem;
+    text-align: center;
+    border-radius: var(--radius);
+    margin-bottom: var(--space-5);
+}
+
+.hero h2 {
+    margin: 0 0 var(--space-3);
+    font-size: 2rem;
+}
+
+.hero__cta {
+    display: inline-block;
+    background-color: var(--color-primary);
+    color: white;
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-weight: bold;
+    transition: filter 0.2s ease;
+}
+
+.hero__cta:hover,
+.hero__cta:focus-visible {
+    filter: brightness(0.9);
+    outline: 2px solid white;
+    outline-offset: 2px;
+}
+
+/* Контейнер для видео с фиксированным соотношением сторон */
+.media {
+    aspect-ratio: 16/9;
+    width: min(100%, 960px);
+    margin-inline: auto;
+    margin-top: var(--space-4);
+}
+
+.media iframe,
+.media video {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: var(--radius);
+}
