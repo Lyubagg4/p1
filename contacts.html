@@ -3,43 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Контакты</title>
+    <title>Контакты - X2App</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header class="header container--full">
-    <a href="index.html" class="header__logo">Мой Сайт</a>
-    <nav>
+<div class="page">
+    <header class="header">
+        <h1 class="header__title">X2App</h1>
+    </header>
+
+    <nav class="nav">
         <ul class="nav__list">
-            <li><a href="index.html" class="nav__link">Главная</a></li>
-            <li><a href="about.html" class="nav__link">О нас</a></li>
-            <li><a href="contacts.html" class="nav__link nav__link--active">Контакты</a></li>
+            <li class="nav__item"><a class="nav__link" href="index_v1.html">Главная</a></li>
+            <li class="nav__item"><a class="nav__link" href="news.html">Новости</a></li>
+            <li class="nav__item"><a class="nav__link" href="practice.html">Практики</a></li>
+            <li class="nav__item"><a class="nav__link" href="goods_v1.html">Товары</a></li>
+            <li class="nav__item nav__item--active"><a class="nav__link" href="contacts.html">Контакты</a></li>
         </ul>
     </nav>
-</header>
 
-<main class="container">
-    <h1>Наши контакты</h1>
+    <main class="main">
+        <section class="section">
+            <div class="section__header">
+                <h1 class="section__title">Наши контакты</h1>
+            </div>
 
-    <section>
-        <h2>Адрес</h2>
-        <p>Наш физический адрес...</p>
-    </section>
+            <div class="contacts-grid">
+                <article class="contact-card">
+                    <h3 class="contact-card__title">Электронная почта</h3>
+                    <p class="contact-card__text">Адрес электронной почты: astafev@mirea.ru</p>
+                </article>
 
-    <section>
-        <h2>Телефоны</h2>
-        <p>Наши контактные телефоны...</p>
-    </section>
+                <article class="contact-card">
+                    <h3 class="contact-card__title">Телефон</h3>
+                    <p class="contact-card__text">+7 (999) 123-45-67</p>
+                </article>
 
-    <section>
-        <h2>Email</h2>
-        <p>Наша электронная почта...</p>
-    </section>
-</main>
+                <article class="contact-card">
+                    <h3 class="contact-card__title">Адрес</h3>
+                    <p class="contact-card__text">г. Москва, ул. Примерная, д. 123</p>
+                </article>
 
-<footer class="container">
-    <p>© 2023 Название вашего сайта. Все права защищены.</p>
-    <p>Телефон: +7 (123) 456-78-90</p>
-</footer>
+                <article class="contact-card">
+                    <h3 class="contact-card__title">Время работы</h3>
+                    <p class="contact-card__text">Пн-Пт: 9:00 - 18:00<br>Сб-Вс: выходной</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p class="footer__text">© 2024 X2App. Все права защищены.</p>
+    </footer>
+</div>
 </body>
 </html>

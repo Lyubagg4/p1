@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная - Портфолио</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Стили для модального окна */
+        dialog::backdrop {
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        dialog {
+            border: none;
+            border-radius: 12px;
+            padding: 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            width: 90vw;
+            /* Центрирование модального окна */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            margin: 0;
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px 12px 0 0;
+            margin: 0;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .modal-content {
+            padding: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e9ecef;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #f8f9fa;
+            color: #2c3e50;
+            border: 2px solid #e9ecef;
+        }
+
+        .btn-secondary:hover {
+            background: #e9ecef;
+        }
+
+        .required {
+            color: #e74c3c;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 600px) {
+            dialog {
+                margin: 1rem;
+                width: calc(100vw - 2rem);
+            }
+
+            .modal-actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Основной контейнер -->
+<div class="page">
+    <!-- Шапка -->
+    <header class="header">
+        <h1 class="header__title">Моё портфолио</h1>
+    </header>
+    <!-- Навигация -->
+    <nav class="nav">
+        <ul class="nav__list">
+            <li class="nav__item nav__item--active">
+                <a class="nav__link" href="index_v1.html">Главная</a>
+            </li>
+            <li class="nav__item">
+                <a class="nav__link" href="news.html">Новости</a>
+            </li>
+            <li class="nav__item">
+                <a class="nav__link" href="contacts.html">Контакты</a>
+            </li>
+            <li class="nav__item">
+                <a class="nav__link" href="goods_v1.html">Продукты</a>
+            </li>
+            <li class="nav__item">
+                <a class="nav__link" href="practice.html">Практики</a>
+            </li>
+        </ul>
+    </nav>
+    <!-- Основной контент -->
+    <main class="main">
+        <!-- Профиль -->
+        <section class="profile">
+            <div class="profile__card">
+                <img class="profile__photo" src="assets/1.jpg" alt="Фото">
+                <div class="profile__info">
+                    <h2 class="profile__name">Иванов Иван</h2>
+                    <p class="profile__group">ЭФБО-01-22</p>
+                </div>
+            </div>
+            <button class="profile__button" onclick="document.getElementById('contactModal').showModal()">
+                Связаться со мной
+            </button>
+        </section>
+
+        <!-- Обо мне -->
+        <section class="about">
+            <h2 class="about__title">Обо мне</h2>
+            <div class="about__content">
+                <p class="about__text">
+                    Студент, увлекаюсь веб-разработкой. Изучаю HTML, CSS и JavaScript.
+                    Люблю создавать красивые и функциональные сайты.
+                </p>
+            </div>
+        </section>
+        <!-- Навыки -->
+        <section class="skills">
+            <h2 class="skills__title">Мои навыки</h2>
+            <div class="skills__list">
+                <div class="skill skill--html">
+                    <span class="skill__name">HTML</span>
+                </div>
+                <div class="skill skill--css">
+                    <span class="skill__name">CSS</span>
+                </div>
+                <div class="skill skill--js">
+                    <span class="skill__name">JavaScript</span>
+                </div>
+            </div>
+        </section>
+        <!-- Проекты -->
+        <section class="projects">
+            <h2 class="projects__title">Проекты</h2>
+            <div class="projects__grid">
+                <div class="project-card">
+                    <h3 class="project-card__title">Личный сайт</h3>
+                    <p class="project-card__desc">Сайт-портфолио на HTML и CSS</p>
+                </div>
+                <div class="project-card">
+                    <h3 class="project-card__title">Todo приложение</h3>
+                    <p class="project-card__desc">Простое приложение для задач</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Подвал -->
+    <footer class="footer">
+        <p class="footer__text">&copy; 2024 Мой сайт</p>
+    </footer>
+</div>
+
+<!-- МОДАЛЬНОЕ ОКНО ДЛЯ ФОРМЫ ОБРАТНОЙ СВЯЗИ -->
+<dialog id="contactModal">
+    <div class="modal-header">
+        <h2>Форма обратной связи</h2>
+    </div>
+
+    <div class="modal-content">
+        <form method="dialog">
+            <div class="form-group">
+                <label for="name">Имя <span class="required">*</span></label>
+                <input type="text" id="name" name="name" required placeholder="Введите ваше имя">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Телефон <span class="required">*</span></label>
+                <input type="tel" id="phone" name="phone" required placeholder="+7 (XXX) XXX-XX-XX">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Электронная почта <span class="required">*</span></label>
+                <input type="email" id="email" name="email" required placeholder="example@mail.ru">
+            </div>
+
+            <div class="form-group">
+                <label for="category">Категория обращения <span class="required">*</span></label>
+                <select id="category" name="category" required>
+                    <option value="">Выберите категорию</option>
+                    <option value="cooperation">Сотрудничество</option>
+                    <option value="project">Обсуждение проекта</option>
+                    <option value="question">Вопрос</option>
+                    <option value="other">Другое</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Текст обращения <span class="required">*</span></label>
+                <textarea id="message" name="message" required placeholder="Опишите вашу проблему или вопрос..."></textarea>
+            </div>
+
+            <div class="modal-actions">
+                <button type="button" class="btn btn-secondary" onclick="document.getElementById('contactModal').close()">
+                    Отмена
+                </button>
+                <button type="submit" class="btn btn-primary">Отправить</button>
+            </div>
+        </form>
+    </div>
+</dialog>
+</body>
+</html>
