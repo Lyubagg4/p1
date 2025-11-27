@@ -2,59 +2,311 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Контакты - X2App</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Контакты - Портфолио</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: #007bff;
+            color: white;
+            margin-right: 15px;
+        }
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: #000;
+            color: white;
+            padding: 8px;
+            z-index: 10000;
+            text-decoration: none;
+        }
+        .skip-link:focus {
+            top: 6px;
+        }
+
+        :focus-visible {
+            outline: 2px solid #0056b3;
+            outline-offset: 2px;
+        }
+
+        .adaptive-padding {
+            padding-inline: clamp(1rem, 3vw, 2rem);
+        }
+
+        .btn, .nav-link {
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        /* Улучшенная доступность для формы */
+        .form-label {
+            font-weight: 600;
+        }
+
+        .required-field::after {
+            content: " *";
+            color: #dc3545;
+        }
+
+        /* Стили для состояний валидации */
+        .was-validated .form-control:valid {
+            border-color: #198754;
+        }
+
+        .was-validated .form-control:invalid {
+            border-color: #dc3545;
+        }
+    </style>
 </head>
-<body>
-<div class="page">
-    <header class="header">
-        <h1 class="header__title">X2App</h1>
+<body class="bg-light">
+<a href="#main-content" class="skip-link">Перейти к основному содержимому</a>
+
+<div class="container-fluid p-0">
+    <header class="bg-primary text-white py-4">
+        <div class="container adaptive-padding">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h1 class="h3 mb-1">Контакты</h1>
+                    <p class="mb-0 opacity-75">Свяжитесь со мной</p>
+                </div>
+                <div class="col-auto">
+                    <span class="badge bg-light text-primary">ЭФБО-01-24</span>
+                </div>
+            </div>
+        </div>
     </header>
 
-    <nav class="nav">
-        <ul class="nav__list">
-            <li class="nav__item"><a class="nav__link" href="index_v1.html">Главная</a></li>
-            <li class="nav__item"><a class="nav__link" href="news.html">Новости</a></li>
-            <li class="nav__item"><a class="nav__link" href="practice.html">Практики</a></li>
-            <li class="nav__item"><a class="nav__link" href="goods_v1.html">Товары</a></li>
-            <li class="nav__item nav__item--active"><a class="nav__link" href="contacts.html">Контакты</a></li>
-        </ul>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Основная навигация">
+        <div class="container adaptive-padding">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-expanded="false" aria-controls="navbarNav" aria-label="Переключить навигацию">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="bi bi-house me-1" aria-hidden="true"></i>Главная
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="projects.html">
+                            <i class="bi bi-folder me-1" aria-hidden="true"></i>Проекты
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="diary.html">
+                            <i class="bi bi-journal me-1" aria-hidden="true"></i>Дневник
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="contacts.html" aria-current="page">
+                            <i class="bi bi-telephone me-1" aria-hidden="true"></i>Контакты
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </nav>
 
-    <main class="main">
-        <section class="section">
-            <div class="section__header">
-                <h1 class="section__title">Наши контакты</h1>
+    <main id="main-content" class="container my-4 adaptive-padding" tabindex="-1">
+        <div class="row">
+            <div class="col-lg-8 mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-light">
+                        <h2 class="card-title h5 mb-0">
+                            <i class="bi bi-envelope text-primary me-2" aria-hidden="true"></i>
+                            Форма обратной связи
+                        </h2>
+                    </div>
+                    <div class="card-body">
+                        <form id="contactForm" novalidate>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="name" class="form-label required-field">
+                                        Имя
+                                    </label>
+                                    <input type="text" class="form-control" id="name" required
+                                           aria-required="true" placeholder="Введите ваше имя"
+                                           aria-describedby="name-help name-error">
+                                    <div id="name-help" class="form-text">Введите ваше полное имя</div>
+                                    <div class="invalid-feedback" id="name-error" role="alert">Пожалуйста, введите ваше имя</div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="email" class="form-label required-field">
+                                        Email
+                                    </label>
+                                    <input type="email" class="form-control" id="email" required
+                                           aria-required="true" placeholder="example@mail.ru"
+                                           aria-describedby="email-help email-error">
+                                    <div id="email-help" class="form-text">Мы не передаем ваш email третьим лицам</div>
+                                    <div class="invalid-feedback" id="email-error" role="alert">Пожалуйста, введите корректный email</div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="category" class="form-label required-field">
+                                    Категория обращения
+                                </label>
+                                <select class="form-select" id="category" required aria-required="true"
+                                        aria-describedby="category-help category-error">
+                                    <option value="">Выберите категорию</option>
+                                    <option value="technical">Техническая поддержка</option>
+                                    <option value="commercial">Коммерческое предложение</option>
+                                    <option value="cooperation">Сотрудничество</option>
+                                    <option value="complaint">Жалоба</option>
+                                    <option value="suggestion">Предложение</option>
+                                    <option value="other">Другое</option>
+                                </select>
+                                <div id="category-help" class="form-text">Выберите наиболее подходящую категорию</div>
+                                <div class="invalid-feedback" id="category-error" role="alert">Пожалуйста, выберите категорию</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="message" class="form-label required-field">
+                                    Текст обращения
+                                </label>
+                                <textarea class="form-control" id="message" rows="5" required
+                                          aria-required="true" placeholder="Опишите вашу проблему или вопрос..."
+                                          aria-describedby="message-help message-error"></textarea>
+                                <div id="message-help" class="form-text">Опишите подробно ваш вопрос или предложение</div>
+                                <div class="invalid-feedback" id="message-error" role="alert">Пожалуйста, введите сообщение</div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary w-100">
+                                <i class="bi bi-send me-2" aria-hidden="true"></i>Отправить сообщение
+                            </button>
+                        </form>
+                    </div>
+                </div>
             </div>
 
-            <div class="contacts-grid">
-                <article class="contact-card">
-                    <h3 class="contact-card__title">Электронная почта</h3>
-                    <p class="contact-card__text">Адрес электронной почты: astafev@mirea.ru</p>
-                </article>
+            <!-- Остальная часть contacts.html без изменений -->
+            <div class="col-lg-4 mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-light">
+                        <h2 class="card-title h5 mb-0">
+                            <i class="bi bi-info-circle text-primary me-2" aria-hidden="true"></i>
+                            Контактная информация
+                        </h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="contact-icon" aria-hidden="true">
+                                <i class="bi bi-envelope"></i>
+                            </div>
+                            <div>
+                                <strong>Электронная почта</strong>
+                                <div class="text-muted">student@edu.ru</div>
+                            </div>
+                        </div>
 
-                <article class="contact-card">
-                    <h3 class="contact-card__title">Телефон</h3>
-                    <p class="contact-card__text">+7 (999) 123-45-67</p>
-                </article>
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="contact-icon" style="background-color: #6f42c1;" aria-hidden="true">
+                                <i class="bi bi-github"></i>
+                            </div>
+                            <div>
+                                <strong>GitHub</strong>
+                                <div class="text-muted">github.com/username</div>
+                            </div>
+                        </div>
 
-                <article class="contact-card">
-                    <h3 class="contact-card__title">Адрес</h3>
-                    <p class="contact-card__text">г. Москва, ул. Примерная, д. 123</p>
-                </article>
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="contact-icon" style="background-color: #28a745;" aria-hidden="true">
+                                <i class="bi bi-geo-alt"></i>
+                            </div>
+                            <div>
+                                <strong>Адрес</strong>
+                                <div class="text-muted">Город, Страна</div>
+                            </div>
+                        </div>
 
-                <article class="contact-card">
-                    <h3 class="contact-card__title">Время работы</h3>
-                    <p class="contact-card__text">Пн-Пт: 9:00 - 18:00<br>Сб-Вс: выходной</p>
-                </article>
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="contact-icon" style="background-color: #fd7e14;" aria-hidden="true">
+                                <i class="bi bi-telephone"></i>
+                            </div>
+                            <div>
+                                <strong>Телефон</strong>
+                                <div class="text-muted">+7 (XXX) XXX-XX-XX</div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center">
+                            <div class="contact-icon" style="background-color: #20c997;" aria-hidden="true">
+                                <i class="bi bi-clock"></i>
+                            </div>
+                            <div>
+                                <strong>Время работы</strong>
+                                <div class="text-muted">Пн-Пт: 9:00-18:00</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card shadow-sm mt-4">
+                    <div class="card-header bg-light">
+                        <h2 class="card-title h5 mb-0">
+                            <i class="bi bi-lightning text-primary me-2" aria-hidden="true"></i>
+                            Быстрые действия
+                        </h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-outline-primary" onclick="downloadResume()">
+                                <i class="bi bi-download me-2" aria-hidden="true"></i>Скачать резюме
+                            </button>
+                            <a href="projects.html" class="btn btn-outline-success">
+                                <i class="bi bi-folder me-2" aria-hidden="true"></i>Посмотреть проекты
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </section>
+        </div>
     </main>
 
-    <footer class="footer">
-        <p class="footer__text">© 2024 X2App. Все права защищены.</p>
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container adaptive-padding">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2024 Портфолио студента. Все права защищены.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="contacts.html" class="text-white text-decoration-none me-3">Контакты</a>
+                    <a href="#" class="text-white text-decoration-none">Политика конфиденциальности</a>
+                </div>
+            </div>
+        </div>
     </footer>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+        if (!this.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        this.classList.add('was-validated');
+    });
+
+    function downloadResume() {
+        alert('Резюме будет скачано');
+    }
+</script>
 </body>
 </html>
